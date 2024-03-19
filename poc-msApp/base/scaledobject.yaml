@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: leitura-rabbitmq
+  namespace: ms
+spec:
+  scaleTargetRef:
+    name: leitura
+  triggers:
+  - type: rabbitmq
+    metadata:
+      host: http://user:password@localhost:5672/
+      mode: QueueLength
+      value: "100.50" 
+      activationValue: "10"
+      queueName: RABBITMQ_QUEUE
+      hostFromEnv: RABBITMQ_HOST
+      unsafeSsl: "true"

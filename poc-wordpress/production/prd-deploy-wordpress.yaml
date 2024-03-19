@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: wordpress
+          image: docker.io/bitnami/wordpress:6.1.1-debian-11-r23
+          env:
+            - name: AVANTI_ENV_VALUE
+              value: "production"
+      volumes:
+        - name: wordpress-data
+          persistentVolumeClaim:
+            claimName: wordpress-prd

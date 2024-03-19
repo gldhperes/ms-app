@@ -1,0 +1,24 @@
+#deployment-escrita.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: escrita
+  namespace: ms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: escrita
+  template:
+    metadata:
+      labels:
+        app: escrita
+    spec:
+      containers:
+      - name: escrita
+        image: guilhermeperes/ms-escrita:latest
+        envFrom:
+        - configMapRef:
+            name: escrita-config
+        - secretRef:
+            name: escrita-secret

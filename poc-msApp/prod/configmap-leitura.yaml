@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: leitura-config
+data:
+  RABBITMQ_QUEUE: prod-messages
+  RABBITMQ_PREFETCH: "1"

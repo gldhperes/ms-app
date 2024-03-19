@@ -1,0 +1,64 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../bases/
+
+namespace: production
+
+commonLabels:
+  kustomize-source: production
+  environment: production
+  cluster: k8s-flz1
+  client: CLT231-X
+  owner-team: ied-avanti
+  1st-level-contact: "cicerow-at-avanti.io"
+  2st-level-contact: "manager-at-avanti.io"
+
+commonAnnotations:
+  avanti.io/source: https://github.com/avanti/poc-wordpress
+  avanti.io/branch: main
+
+resources:
+- prd-namespace.yaml
+
+patches:
+- target:
+    kind: Deployment
+    name: wordpress
+  path: prd-deploy-wordpress.yaml
+- target:
+    kind: PersistentVolumeClaim
+    name: wordpress
+  patch: |-
+    - op: replace
+      path: /metadata/name
+      value: wordpress-prd
+    - op: replace
+      path: /spec/resources/requests/storage
+      value: 4Gi
+- target:
+    kind: Secret
+    name: wordpress-mariadb
+  path: prd-secret-wordpress-mariadb.yaml
+- target:
+    kind: Secret
+    name: wordpress
+  path: prd-secret-wordpress.yaml
+- target:
+    kind: StatefulSet
+    name: wordpress-mariadb
+  path: prd-sts-wordpress-mariadb.yaml
+- target:
+    kind: Service
+    name: wordpress
+  patch: |-
+    - op: add
+      path: /spec/externalIPs
+      value: [ "172.26.28.36" ]
+    - op: replace
+      path: /spec/ports/0/port
+      value: 8089
+    - op: replace
+      path: /spec/ports/1/port
+      value: 8443

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: wordpress-mariadb
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: mariadb-fix-permission
+          image: busybox
+          volumeMounts:
+            - name: data-dev
+              mountPath: /bitnami/mariadb
+      containers:
+        - name: mariadb
+          image: docker.io/bitnami/mariadb:10.6.11-debian-11-r12
+          volumeMounts:
+            - name: data-dev
+              mountPath: /bitnami/mariadb
+  volumeClaimTemplates:
+    - metadata:
+        name: data-dev
+        labels:
+              app: wordpress
+              k8s-app: mariadb
+              environment: development
+      spec:
+        accessModes:
+          - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: "3Gi"

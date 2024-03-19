@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-mariadb
+  namespace: "default"
+  labels:
+    app.kubernetes.io/name: mariadb
+    app.kubernetes.io/part-of: wordpress
+    app.kubernetes.io/version: 10.6.11
+    app.kubernetes.io/managed-by: kustomize
+    app: wordpress
+    k8s-app: mariadb
+    version: 10.6.11
+    environment: prodution
+  annotations:
+spec:
+  type: ClusterIP
+  sessionAffinity: None
+  ports:
+    - name: mysql
+      port: 3306
+      protocol: TCP
+      targetPort: mysql
+      nodePort: null
+  selector: 
+    app: wordpress
+    k8s-app: mariadb

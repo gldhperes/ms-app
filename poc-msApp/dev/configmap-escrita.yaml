@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: escrita-config
+data:
+  RABBITMQ_QUEUE: dev-messages
+  TIMER: "1"
