@@ -1,10 +1,19 @@
+# base/kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: ms
+
+metadata:
+  name: app
+  namespace: ms
 
 resources:
-- deployment-leitura.yaml
-- deployment-escrita.yaml
-- scaledobject.yaml
-- service-leitura.yaml
-- service-escrita.yaml
+# - leitura/deployment-leitura.yaml
+# - leitura/service-leitura.yaml
+- rabbitMQ/deployment-rabbitmq.yaml
+- rabbitMQ/service-rabbitmq.yaml
+- rabbitMQ/ingress-rabbitmq.yaml
+
+- escrita/deployment-escrita.yaml
+- escrita/service-escrita.yaml
+
+# - scaledobject.yaml

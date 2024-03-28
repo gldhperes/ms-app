@@ -1,0 +1,19 @@
+# service-rabbitmq
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+  namespace: ms
+spec:
+  selector:
+    app: rabbitmq
+  ports:
+    - protocol: TCP
+      name: rabbitmq-port 
+      port: 5672     # Porta para acesso ao RabbitMQ
+      targetPort: 5672
+    - protocol: TCP
+      name: rabbitmq-m-port 
+      port: 15672    # Porta para acesso ao painel de controle do RabbitMQ
+      targetPort: 15672
+  type: NodePort

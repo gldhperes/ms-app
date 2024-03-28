@@ -1,7 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: escrita-config
+  name: leitura-config
+  namespace: ms
 data:
   RABBITMQ_QUEUE: dev-messages
-  TIMER: "1"
+  RABBITMQ_PREFETCH: 1
