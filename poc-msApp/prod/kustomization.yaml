@@ -5,8 +5,8 @@ namespace: ms
 
 resources:
 - ../base/
-- escrita/
-- leitura/
+# - escrita/
+# - leitura/
 
 configMapGenerator:
   - name: escrita-config

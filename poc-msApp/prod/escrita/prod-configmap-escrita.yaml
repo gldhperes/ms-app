@@ -7,3 +7,4 @@ data:
   APP_NAME: prod-app-escrita
   RABBITMQ_QUEUE: prod-messages
   TIMER: 1
+  RABBITMQ_PORT: 5672            # 5672 

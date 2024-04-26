@@ -8,3 +8,4 @@ metadata:
 data:
   RABBITMQ_QUEUE: prod-messages
   RABBITMQ_PREFETCH: 1
+  RABBITMQ_PORT: 5672            # 5672 

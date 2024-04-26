@@ -4,5 +4,6 @@ metadata:
   name: leitura-config
   namespace: ms
 data:
-  RABBITMQ_QUEUE: dev-messages
+  RABBITMQ_QUEUE: "dev-messages"
   RABBITMQ_PREFETCH: 1
+  RABBITMQ_PORT: 5672            # 5672 
