@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: escrita-config
-  namespace: ms
+  # namespace: ms
 data:
   APP_NAME: prod-app-escrita
   RABBITMQ_QUEUE: prod-messages

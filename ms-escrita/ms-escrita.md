@@ -19,7 +19,7 @@ Para rodar a imagem de ms-escrita.py execute o comando:
 docker run -e "RABBITMQ_URL=host.docker.internal" <ID_DA_IMAGEM>
 ...
 
-Note que no arquivo .env a variavel *RABBITMQ_URL* esta como *localhost*, para o docker  entender que se trata de um localhost, deve ser passado como parametro para a *RABBITMQ_URL* o valor de *host.docker.internal*
+Note que no arquivo .env a variavel *RABBITMQ_URL* esta como *localhost*, para o docker entender que se trata de um localhost, deve ser passado como parametro para a *RABBITMQ_URL* o valor de *host.docker.internal*
 
 ## kubernetes
 

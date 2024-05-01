@@ -4,16 +4,8 @@ kind: Kustomization
 
 metadata:
   name: app
-  namespace: ms
 
 resources:
-- rabbitMQ/deployment-rabbitmq.yaml
-- rabbitMQ/ingress-rabbitmq.yaml
-- rabbitMQ/service-rabbitmq.yaml
-
-- leitura/deployment-leitura.yaml
-- leitura/service-leitura.yaml
-- leitura/scaledobject.yaml
-
 - escrita/deployment-escrita.yaml
 - escrita/service-escrita.yaml
+

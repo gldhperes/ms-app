@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: ms
+# namespace: ms
 
 resources:
 - ../base/
@@ -11,15 +11,15 @@ resources:
 configMapGenerator:
   - name: escrita-config
     files:
-    - escrita/prod-configmap-escrita.yaml
+    - escrita/configmap.yaml
   - name: leitura-config
     files:
-    - leitura/prod-configmap-leitura.yaml
+    - leitura/configmap.yaml
 
 secretGenerator:
   - name: escrita-secret
     files:
-    - escrita/prod-secret-escrita.yaml
+    - escrita/secret.yaml
   - name: leitura-secret
     files:
-    - leitura/prod-secret-leitura.yaml
+    - leitura/secret.yaml

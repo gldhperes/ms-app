@@ -4,7 +4,7 @@ kind: Ingress
 
 metadata:
   name: rabbitmq-ingress
-  namespace: ms
+  # namespace: ms
   
 spec:
   rules:
@@ -15,6 +15,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: rabbitmq
+                name: rmq
                 port:
                   number: 15672  # Porta do painel de controle do RabbitMQ

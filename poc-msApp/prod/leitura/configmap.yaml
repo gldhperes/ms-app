@@ -3,7 +3,7 @@ kind: ConfigMap
 
 metadata:
   name: leitura-config
-  namespace: ms
+  # namespace: ms
 
 data:
   RABBITMQ_QUEUE: prod-messages
