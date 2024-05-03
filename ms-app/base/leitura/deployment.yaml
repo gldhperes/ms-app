@@ -1,0 +1,57 @@
+#deployment-escrita.yaml
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: leitura-base
+  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: leitura-base
+  template:
+    metadata:
+      labels:
+        app: leitura-base
+    spec:
+      containers:
+        - name: leitura-base
+          image: guilhermeperes/ms-leitura:latest
+          env:
+          # ConfigMap
+          - name: APP_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: ${CONFIG_MAP_NAME}
+                key: APP_NAME
+          - name: RABBITMQ_QUEUE
+            valueFrom:
+              configMapKeyRef:
+                name: ${CONFIG_MAP_NAME}
+                key: RABBITMQ_QUEUE
+          - name: TIMER
+            valueFrom:
+              configMapKeyRef:
+                name: ${CONFIG_MAP_NAME}
+                key: TIMER
+          # Secrets
+          - name: RABBITMQ_URL
+            valueFrom:
+              secretKeyRef:
+                name: conn-secret
+                key: RABBITMQ_URL
+          - name: RABBITMQ_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: conn-secret
+                key: RABBITMQ_USERNAME
+          - name: RABBITMQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: conn-secret
+                key: RABBITMQ_PASSWORD
+
+
+
+                

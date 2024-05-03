@@ -1,0 +1,14 @@
+#service-leitura.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: leitura
+  # namespace: ms
+spec:
+  type: LoadBalancer
+  selector:
+    app: leitura
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

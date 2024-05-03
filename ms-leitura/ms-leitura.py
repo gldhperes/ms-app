@@ -11,7 +11,6 @@ load_dotenv(verbose=True)
 
 RABBITMQ_URL = os.getenv('RABBITMQ_URL')
 RABBITMQ_PORT = os.getenv('RABBITMQ_PORT')
-# PORT = int(RABBITMQ_PORT)
 RABBITMQ_USERNAME = os.getenv('RABBITMQ_USERNAME')
 RABBITMQ_PASSWORD = os.getenv('RABBITMQ_PASSWORD')
 RABBITMQ_QUEUE = os.getenv('RABBITMQ_QUEUE')
@@ -20,7 +19,6 @@ RABBITMQ_PREFETCH = int(os.getenv('RABBITMQ_PREFETCH'))
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(
         host=RABBITMQ_URL,
-        port=RABBITMQ_PORT,
         credentials=pika.PlainCredentials(RABBITMQ_USERNAME, RABBITMQ_PASSWORD)
     )
 )

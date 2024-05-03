@@ -1,0 +1,41 @@
+#deployment-escrita.yaml
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: escrita-base
+  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: escrita-base
+  template:
+    metadata:
+      labels:
+        app: escrita-base
+    spec:
+      containers:
+        - name: escrita-base
+          image: guilhermeperes/ms-escrita:latest
+          env:
+          # Secrets
+          - name: RABBITMQ_URL
+            valueFrom:
+              secretKeyRef:
+                name: conn-secret
+                key: RABBITMQ_URL
+          - name: RABBITMQ_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: conn-secret
+                key: RABBITMQ_USERNAME
+          - name: RABBITMQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: conn-secret
+                key: RABBITMQ_PASSWORD
+
+
+
+                

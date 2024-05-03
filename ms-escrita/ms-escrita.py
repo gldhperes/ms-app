@@ -1,5 +1,4 @@
 #!/usr/bin/python
-
 import os
 import time
 import lorem
@@ -9,22 +8,18 @@ from dotenv import load_dotenv
 
 load_dotenv(verbose=True)
 
+APP_NAME = os.getenv('APP_NAME')
 RABBITMQ_URL = os.getenv('RABBITMQ_URL')
-RABBITMQ_PORT = os.getenv('RABBITMQ_PORT')
 RABBITMQ_USERNAME = os.getenv('RABBITMQ_USERNAME')
 RABBITMQ_PASSWORD = os.getenv('RABBITMQ_PASSWORD')
 RABBITMQ_QUEUE = os.getenv('RABBITMQ_QUEUE')
-
-APP_NAME = os.getenv('APP_NAME')
 TIMER = int(os.getenv('TIMER'))
 
-# print(f'PORT type {type(RABBITMQ_PORT)} - {int(RABBITMQ_PORT)}')
-print(f'Sendind message to queue {RABBITMQ_QUEUE} in {RABBITMQ_URL}:{RABBITMQ_PORT} every {TIMER} seconds')
+print(f'Sendind message to queue {RABBITMQ_QUEUE} in {RABBITMQ_URL} every {TIMER} seconds')
 
 connection = pika.BlockingConnection(
     pika.ConnectionParameters(
         host=RABBITMQ_URL,
-        # port=RABBITMQ_PORT,
         credentials=pika.PlainCredentials(RABBITMQ_USERNAME, RABBITMQ_PASSWORD)
     )
 )
