@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          echo "pwd"
+          pwd
           pip install -r ../../ms-escrita/requirements.txt
           
       - name: Test with pytest
