@@ -23,7 +23,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           echo "pwd"
-          pip install -r ./../ms-escrita/requirements.txt
+          pip install -r ./../../ms-escrita/requirements.txt
           
       - name: Test with pytest
         run: |
