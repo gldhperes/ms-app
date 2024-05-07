@@ -4,11 +4,12 @@ kind: Kustomization
 
 resources:
 - secret.yaml
+- auth.yaml
 
 # - escrita/cronjob.yaml
 # - escrita/deployment.yaml
-- escrita/service.yaml
+# - escrita/service.yaml
 
 # - leitura/deployment.yaml
-- leitura/scaledobject.yaml
-- leitura/service.yaml
+# - leitura/scaledobject.yaml
+# - leitura/service.yaml
