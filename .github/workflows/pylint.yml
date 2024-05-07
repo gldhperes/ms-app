@@ -1,4 +1,4 @@
-name: Pylint
+name: Pylint (Quality Test)
 
 on: [push]
 
